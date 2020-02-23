@@ -18,14 +18,15 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
     }
 
     private void initFragmentLogin() {
-        LoginFragment loginFragment =LoginFragment.newInstance();
+        LoginFragment loginFragment = LoginFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.AL_fragment_container,loginFragment).commit();
 
     }
 
+
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void moveToActivityNavigation() {
 
     }
 }
