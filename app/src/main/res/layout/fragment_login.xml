@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".Fragment.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <View
@@ -93,8 +93,9 @@
                     tools:ignore="Suspicious0dp"/>
                 <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/FL_editText_userName"
                     android:layout_height="0dp"
-                    android:text="Usernem"
+                    android:hint="Usernem"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:background="@drawable/rectangele"
@@ -107,7 +108,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:text="Password"
+                    android:id="@+id/FL_editText_pasword"
+                    android:hint="Password"
                     android:textStyle="bold"
                     android:drawableLeft="@drawable/key"
                     android:textColor="@android:color/white"
@@ -135,6 +137,7 @@
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:text="Remember me"
+                        android:id="@+id/FL_checkbox_login_CB"
                         android:textStyle="bold"
                         android:layout_alignParentRight="true"
                         android:buttonTint="@color/bluchecbox"
