@@ -3,10 +3,12 @@
     <color name="colorPrimary">#050D53</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#090D1C</color>
-    <color name="blulite">#2196F3</color>
+    <color name="blulite">#CCFCF9F9</color>
     <color name="colorAccen">#181F3A</color>
     <color name="bluchecbox">#246EFF</color>
-    <color name="navigationBar">#FF16274E</color>
+    <color name="navigationBar">#FF132E5C</color>
+    <color name="chengstatusbar">#FF03050C</color>
+    <color name="text189">#CCFCF9F9</color>
 
 
 

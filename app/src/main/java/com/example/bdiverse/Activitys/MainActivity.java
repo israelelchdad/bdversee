@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.bdiverse.Fragment.Done;
 import com.example.bdiverse.Fragment.Inbox;
@@ -32,11 +34,26 @@ public class MainActivity extends AppCompatActivity implements Open.OnFragmentOp
 
         openFragment(Open.newInstance());
         initViewOfNavigationbar();
+        chengeColorOfStatusBar();
 
        bottomNavigation = findViewById(R.id.am_bottom_navigation);
        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
 
+
+    }
+
+    private void chengeColorOfStatusBar() {
+        Window window = getWindow();
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(this.getResources().getColor(R.color.chengstatusbar));
 
     }
 
