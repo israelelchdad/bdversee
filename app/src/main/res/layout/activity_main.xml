@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activitys.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:background="@android:color/black"
+       android:id="@+id/ma_fremlayout"
+       android:layout_height="0dp"
+       android:layout_weight="0.9">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+   </FrameLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:background="@android:color/black"
+       android:layout_height="0dp"
+       android:layout_weight="0.006"
+       android:orientation="horizontal"
+      >
+      <View
+          android:layout_width="0dp"
+          android:id="@+id/ma_tab_open"
+          android:background="@color/blulite"
+          android:visibility="invisible"
+          android:layout_height="match_parent"
+         android:layout_weight="1"/>
+      <View
+          android:layout_width="0dp"
+          android:id="@+id/ma_tab_done"
+          android:background="@color/blulite"
+          android:visibility="invisible"
+          android:layout_height="match_parent"
+          android:layout_weight="1"/>
+
+      <View
+          android:layout_width="0dp"
+          android:background="@color/blulite"
+          android:visibility="invisible"
+          android:id="@+id/ma_tab_updates"
+          android:layout_height="match_parent"
+          android:layout_weight="1"/>
+
+      <View
+          android:layout_width="0dp"
+          android:background="@color/blulite"
+          android:visibility="invisible"
+          android:id="@+id/ma_tab_inbox"
+          android:layout_height="match_parent"
+          android:layout_weight="1"/>
+
+      <View
+          android:layout_width="0dp"
+          android:visibility="invisible"
+          android:background="@color/blulite"
+          android:id="@+id/ma_tab_setings"
+          android:layout_height="match_parent"
+          android:layout_weight="1"/>
+
+
+   </LinearLayout>
+   <com.google.android.material.bottomnavigation.BottomNavigationView
+       android:id="@+id/am_bottom_navigation"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="0.1"
+       android:layout_gravity="bottom"
+       app:labelVisibilityMode="labeled"
+       android:background="@color/navigationBar"
+       app:itemIconTint="@android:color/darker_gray"
+       app:itemTextColor="@android:color/white"
+       app:menu="@menu/am_navigationbar"
+       />
+
+
+</LinearLayout>

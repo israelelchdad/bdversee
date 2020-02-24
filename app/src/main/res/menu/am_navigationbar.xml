@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:pelmel="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/action_open"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Open"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_done"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Done"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_updates"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Updates"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_index"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Inbox"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sottings"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Sottings"
+        app:showAsAction="ifRoom" />
+
+</menu>

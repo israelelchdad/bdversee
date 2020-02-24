@@ -1,6 +1,7 @@
 package com.example.bdiverse.Fragment;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,31 +9,45 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 
 import com.example.bdiverse.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link Settings.OnFragmentSettingsListener} interface
+ * to handle interaction events.
+ * Use the {@link Settings#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class Settings extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
-public class LoginFragment extends Fragment {
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
-    private Button movToMainActivity;
-    private CheckBox myCheckbox;
-    EditText userName;
-    EditText password;
+    private OnFragmentSettingsListener mListener;
 
-
-    private OnFragmentInteractionListener mListener;
-
-    public LoginFragment() {
+    public Settings() {
         // Required empty public constructor
     }
 
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
 
-    public static LoginFragment newInstance() {
-        LoginFragment fragment = new LoginFragment();
+     * @return A new instance of fragment Settings.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static Settings newInstance() {
+        Settings fragment = new Settings();
         Bundle args = new Bundle();
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -41,38 +56,30 @@ public class LoginFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
-
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
-        myCheckbox = view.findViewById(R.id.FL_checkbox_login_CB);
-        userName =  view.findViewById(R.id.FL_editText_userName);
-        password =  view.findViewById(R.id.FL_editText_pasword);
-        Button movToMainActivity = view.findViewById(R.id.FL_button_login_BTN);
-        movToMainActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.moveToActivityNavigation(myCheckbox.isChecked(),userName.getText().toString(),password.getText().toString());
-            }
-        });
-
         // Inflate the layout for this fragment
-        return view;
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-
+    public void onButtonPressed() {
+        if (mListener != null) {
+            mListener.FragmentSettings();
+        }
+    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnFragmentSettingsListener) {
+            mListener = (OnFragmentSettingsListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentOpenListener");
@@ -95,8 +102,9 @@ public class LoginFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnFragmentSettingsListener {
         // TODO: Update argument type and name
-        void moveToActivityNavigation(Boolean isSelect,String userName,String password);
+        void FragmentSettings();
     }
 }
+

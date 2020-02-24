@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#050D53</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#090D1C</color>
     <color name="blulite">#2196F3</color>
     <color name="colorAccen">#181F3A</color>
     <color name="bluchecbox">#246EFF</color>
+    <color name="navigationBar">#FF16274E</color>
+
+
+
 
 
 
