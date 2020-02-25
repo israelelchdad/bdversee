@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_marginBottom="7dp"
+    android:layout_height="200dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:background="@color/colorAccen"
         android:orientation="vertical"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        >
 
       <LinearLayout
           android:layout_width="match_parent"
@@ -20,7 +22,8 @@
             android:layout_marginBottom="2dp"
             android:layout_weight="28">
         <TextView
-            android:layout_width="212dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/item_title"
             android:text="Garden cleaning test"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -28,15 +31,28 @@
             android:textColor="@android:color/white"
             android:layout_alignParentLeft="true"/>
             <TextView
-                android:layout_width="27dp"
-                android:text="189"
+                android:layout_width="wrap_content"
+                android:text="Draft"
+                android:id="@+id/item_isdraft"
                 android:layout_height="20dp"
                 android:textColor="@color/text189"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/item_title"
+                android:layout_marginLeft="9dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="189"
+                android:id="@+id/item_id"
+                android:layout_height="20dp"
+                android:textColor="@color/text189"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
           <TextView
-              android:layout_width="132dp"
+              android:layout_width="wrap_content"
               android:layout_height="0dp"
+              android:id="@+id/item_dateAndTime"
               android:text="oct 08| 14:00-15:00"
               android:textColor="@android:color/white"
               android:layout_weight="20"/>
@@ -45,14 +61,16 @@
               android:layout_height="0dp"
               android:layout_weight="18"/>
           <TextView
-              android:layout_width="132dp"
+              android:layout_width="wrap_content"
               android:layout_height="0dp"
+              android:id="@+id/item_nameCompany"
               android:text="Catering israel LTD"
               android:layout_marginBottom="2dp"
               android:textColor="@android:color/white"
               android:layout_weight="20"/>
           <TextView
-              android:layout_width="177dp"
+              android:layout_width="wrap_content"
+              android:id="@+id/item_locationCompany"
               android:layout_height="0dp"
               android:text="Employees feeding south"
               android:layout_marginBottom="2dp"
@@ -70,12 +88,6 @@
               android:background="@drawable/rectangelefrombutton"
               android:layout_weight="40"
               android:layout_margin="2dp"/>
-
-
-
-
-
-
 
       </LinearLayout>
     </LinearLayout>

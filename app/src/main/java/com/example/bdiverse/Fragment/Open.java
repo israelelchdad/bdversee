@@ -4,42 +4,35 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.bdiverse.Adapters.AdapterOfFragmentOpen;
+import com.example.bdiverse.Objects.Task;
 import com.example.bdiverse.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnFragmentOpenListener} interface
- * to handle interaction events.
- * Use the {@link Open#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class Open extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentOpenListener mListener;
+    ArrayList<Task> myListTask;
+    private RecyclerView myRecyclerView;
+    private RecyclerView.LayoutManager mylayoutManager;
+    private RecyclerView.Adapter myAdapter;
 
     public Open() {
-        // Required empty public constructor
-    }
 
+
+    }
 
     public static Open newInstance() {
         Open fragment = new Open();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,19 +40,29 @@ public class Open extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        initListTasks();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_open, container, false);
+        View view =inflater.inflate(R.layout.fragment_open, container, false);
+        myRecyclerView = view.findViewById(R.id.fo_myrecyercleview);
+        initRecaclerView();
+
+        return view;
     }
 
+    private void initRecaclerView() {
+
+
+        mylayoutManager = new LinearLayoutManager(getContext());
+        myRecyclerView.setLayoutManager(mylayoutManager);
+        myAdapter = new AdapterOfFragmentOpen(initListTasks());
+        myRecyclerView.setAdapter(myAdapter);
+
+    }
 
 
     @Override
@@ -77,6 +80,18 @@ public class Open extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+    private ArrayList<Task> initListTasks() {
+        myListTask = new ArrayList<>();
+        myListTask.add(new Task("Garden cleaning test",false,189,"oct 06 |","14:00 -","15:00","Catering israel LTD.","Employees feeding, south"));
+        myListTask.add(new Task("Smoke detector test",true,193,"oct 06 |","14:00 -","15:00","Fire deteaction Systems LTD.","Maintenance of Fire detection System,center"));
+        myListTask.add(new Task("Garden cleaning test",false,189,"oct 06 |","14:00 -","15:00","Catering israel LTD.","Employees feeding, south"));
+        myListTask.add(new Task("Smoke detector test",true,193,"oct 06 |","14:00 -","15:00","Fire deteaction Systems LTD.","Maintenance of Fire detection System,center"));
+        myListTask.add(new Task("Garden cleaning test",false,189,"oct 06 |","14:00 -","15:00","Catering israel LTD.","Employees feeding, south"));
+        myListTask.add(new Task("Smoke detector test",true,193,"oct 06 |","14:00 -","15:00","Fire deteaction Systems LTD.","Maintenance of Fire detection System,center"));
+        myListTask.add(new Task("Garden cleaning test",false,189,"oct 06 |","14:00 -","15:00","Catering israel LTD.","Employees feeding, south"));
+        myListTask.add(new Task("Smoke detector test",true,193,"oct 06 |","14:00 -","15:00","Fire deteaction Systems LTD.","Maintenance of Fire detection System,center"));
+        return myListTask;
     }
 
 

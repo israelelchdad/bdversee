@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#050D53</color>
+    <color name="colorPrimary">#246EFF</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#090D1C</color>
     <color name="blulite">#CCFCF9F9</color>
@@ -9,6 +9,7 @@
     <color name="navigationBar">#FF132E5C</color>
     <color name="chengstatusbar">#FF03050C</color>
     <color name="text189">#CCFCF9F9</color>
+    <color name="all">#0E142C</color>
 
 
 

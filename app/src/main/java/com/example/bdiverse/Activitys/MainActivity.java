@@ -19,13 +19,11 @@ import com.example.bdiverse.Fragment.Updates;
 import com.example.bdiverse.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements Open.OnFragmentOpenListener ,Done.OnFragmentDonenListener,Inbox.OnFragmenInboxListener,Settings.OnFragmentSettingsListener,Updates.OnFragmentUpdatesListener {
     BottomNavigationView bottomNavigation;
-    View open;
-    View done;
-    View updates;
-    View inbox;
-    View settings;
+    ArrayList<View> listOfViewOfNavigatiobar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +37,69 @@ public class MainActivity extends AppCompatActivity implements Open.OnFragmentOp
        bottomNavigation = findViewById(R.id.am_bottom_navigation);
        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
+    }
 
+    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.action_open:
+                    visbilityitem(0);
+                    openFragment(Open.newInstance());
+                    return true;
+                case R.id.action_done:
+                    visbilityitem(1);
+                    openFragment(Done.newInstance());
+                    return true;
+                case R.id.action_updates:
+                    visbilityitem(2);
+                    openFragment(Updates.newInstance());
+                    return true;
+                case R.id.action_index:
+                    visbilityitem(3);
+                    openFragment(Inbox.newInstance());
+                    return true;
+                case R.id.action_sottings:
+                    visbilityitem(4);
+                    openFragment(Settings.newInstance());
+                    return true;
+            }
+
+            return false;
+        }
+    };
+
+    public void openFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.ma_fremlayout, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void initViewOfNavigationbar() {
+        listOfViewOfNavigatiobar= new ArrayList<>();
+        listOfViewOfNavigatiobar.add(findViewById(R.id.ma_tab_open));
+        listOfViewOfNavigatiobar.add(findViewById(R.id.ma_tab_done));
+        listOfViewOfNavigatiobar.add(findViewById(R.id.ma_tab_updates));
+        listOfViewOfNavigatiobar.add(findViewById(R.id.ma_tab_inbox));
+        listOfViewOfNavigatiobar.add( findViewById(R.id.ma_tab_setings));
 
     }
 
+
+    public void visbilityitem(int index){
+        for (int i = 0; i <listOfViewOfNavigatiobar.size() ; i++) {
+            if(i!=index){
+                listOfViewOfNavigatiobar.get(i).setVisibility(View.INVISIBLE);
+            }
+            else {
+                listOfViewOfNavigatiobar.get(i).setVisibility(View.VISIBLE);
+            }
+
+        }
+
+
+    }
     private void chengeColorOfStatusBar() {
         Window window = getWindow();
 
@@ -54,61 +111,6 @@ public class MainActivity extends AppCompatActivity implements Open.OnFragmentOp
 
 // finally change the color
         window.setStatusBarColor(this.getResources().getColor(R.color.chengstatusbar));
-
-    }
-
-    public void openFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-        .replace(R.id.ma_fremlayout, fragment)
-        .addToBackStack(null)
-        .commit();
-    }
-    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()){
-                case R.id.action_open:
-                    visbilityitem(open);
-                    openFragment(Open.newInstance());
-                    return true;
-                case R.id.action_done:
-                    visbilityitem(done);
-                    openFragment(Done.newInstance());
-                    return true;
-                case R.id.action_updates:
-                    visbilityitem(updates);
-                    openFragment(Updates.newInstance());
-                    return true;
-                case R.id.action_index:
-                    visbilityitem(inbox);
-                    openFragment(Inbox.newInstance());
-                    return true;
-                case R.id.action_sottings:
-                    visbilityitem(settings);
-                    openFragment(Settings.newInstance());
-                    return true;
-            }
-
-            return false;
-        }
-    };
-
-    private void initViewOfNavigationbar() {
-        open = findViewById(R.id.ma_tab_open);
-        done = findViewById(R.id.ma_tab_done);
-        updates = findViewById(R.id.ma_tab_updates);
-        inbox = findViewById(R.id.ma_tab_inbox);
-        settings = findViewById(R.id.ma_tab_setings);
-    }
-
-    public void visbilityitem(View view){
-        open.setVisibility(View.INVISIBLE);
-        done.setVisibility(View.INVISIBLE);
-        updates.setVisibility(View.INVISIBLE);
-        inbox.setVisibility(View.INVISIBLE);
-        settings.setVisibility(View.INVISIBLE);
-
-        view.setVisibility(View.VISIBLE);
 
     }
 
