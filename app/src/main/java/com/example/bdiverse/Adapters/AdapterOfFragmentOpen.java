@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,11 +16,14 @@ import com.example.bdiverse.R;
 
 import java.util.ArrayList;
 
-public class AdapterOfFragmentOpen extends RecyclerView.Adapter<AdapterOfFragmentOpen.ViewHolder> {
+public class AdapterOfFragmentOpen extends RecyclerView.Adapter<AdapterOfFragmentOpen.ViewHolder> implements Filterable {
     private ArrayList<Task> myListTask;
+    private ArrayList<Task> myFilterListTask = new ArrayList<>();
+    private TaskFilter myTaskFilter = new TaskFilter();
 
     public AdapterOfFragmentOpen(ArrayList<Task> myListTask) {
        this.myListTask = myListTask;
+       myFilterListTask.addAll(myListTask);
 
 
     }
@@ -32,14 +37,20 @@ public class AdapterOfFragmentOpen extends RecyclerView.Adapter<AdapterOfFragmen
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setHolder(myListTask.get(position));
+        holder.setHolder(myFilterListTask.get(position));
 
 
     }
 
     @Override
     public int getItemCount() {
-        return myListTask.size();
+        return myFilterListTask.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+
+        return myTaskFilter;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -75,6 +86,30 @@ public class AdapterOfFragmentOpen extends RecyclerView.Adapter<AdapterOfFragmen
             dateAndTime.setText(task.getDate()+task.getTimeStart()+task.getTimeEnd());
             nameCompany.setText(task.getNameCmpany());
             locationCompany.setText(task.getLocationCompany());
+        }
+    }
+    private class  TaskFilter extends Filter{
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            ArrayList<Task> myListAlltemFilter = new ArrayList<>();
+            for (Task myTask : myListTask) {
+                if (myTask.getTitle().toLowerCase().contains(constraint.toString().toLowerCase())){
+                    myListAlltemFilter.add(myTask);
+                }
+
+            }
+            results.values = myListAlltemFilter;
+            results.count = myListAlltemFilter.size();
+            return results ;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            myFilterListTask = (ArrayList<Task>) results.values;
+            notifyDataSetChanged();
+
         }
     }
 }

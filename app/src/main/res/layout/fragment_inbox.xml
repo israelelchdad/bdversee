@@ -4,13 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.Inbox">
+    <SearchView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/search_view_layout"
+        android:layout_width="match_parent"
+        android:queryHint="Serch task"
+        android:layout_height="wrap_content"
+        android:theme="@style/SearchViewTheme"/>
+
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50sp"
-        android:text="inbox"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:textSize="50sp"-->
+<!--        android:text="inbox"-->
+<!--        />-->
 
 </FrameLayout>

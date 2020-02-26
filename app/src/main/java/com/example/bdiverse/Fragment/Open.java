@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.bdiverse.Adapters.AdapterOfFragmentOpen;
 import com.example.bdiverse.Objects.Task;
@@ -23,7 +26,8 @@ public class Open extends Fragment {
     ArrayList<Task> myListTask;
     private RecyclerView myRecyclerView;
     private RecyclerView.LayoutManager mylayoutManager;
-    private RecyclerView.Adapter myAdapter;
+    private AdapterOfFragmentOpen myAdapter;
+    EditText myEditTextSerch;
 
     public Open() {
 
@@ -48,21 +52,41 @@ public class Open extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_open, container, false);
-        myRecyclerView = view.findViewById(R.id.fo_myrecyercleview);
-        initRecaclerView();
+
+        initRecaclerView(view);
 
         return view;
     }
 
-    private void initRecaclerView() {
-
-
+    private void initRecaclerView(View view) {
+        myRecyclerView = view.findViewById(R.id.fo_myrecyercleview);
         mylayoutManager = new LinearLayoutManager(getContext());
         myRecyclerView.setLayoutManager(mylayoutManager);
         myAdapter = new AdapterOfFragmentOpen(initListTasks());
         myRecyclerView.setAdapter(myAdapter);
-
+        initSerchTask(view);
     }
+    private void initSerchTask(View view) {
+        myEditTextSerch= view.findViewById(R.id.fopen_editserch_ET);
+        myEditTextSerch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                myAdapter.getFilter().filter(s);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
 
 
     @Override

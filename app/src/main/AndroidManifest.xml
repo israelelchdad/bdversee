@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activitys.LoginActivity"></activity>
-        <activity android:name=".Activitys.MainActivity">
+
+        <activity android:name=".Activitys.MainActivity"
+            android:windowSoftInputMode="adjustNothing">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

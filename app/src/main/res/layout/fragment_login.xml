@@ -95,10 +95,12 @@
                     android:layout_width="match_parent"
                     android:id="@+id/FL_editText_userName"
                     android:layout_height="0dp"
-                    android:hint="Usernem"
+                    android:paddingStart="10dp"
+                    android:hint="@string/fl_edittext_usernam"
+                    android:textColorHint="@color/textSserch"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
-                    android:background="@drawable/rectangele"
+                    android:background="@drawable/rectangle2"
                     android:layout_weight="47"/>
                 <View
                     android:layout_width="match_parent"
@@ -110,10 +112,14 @@
                     android:layout_height="0dp"
                     android:id="@+id/FL_editText_pasword"
                     android:hint="Password"
+                    android:textColorHint="@color/textSserch"
                     android:textStyle="bold"
-                    android:drawableLeft="@drawable/key"
+                    android:paddingStart="10dp"
+                    android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
                     android:textColor="@android:color/white"
-                    android:background="@drawable/rectangele"
+                    android:drawablePadding="10dp"
+                    android:background="@drawable/rectangle2"
+
                     android:layout_weight="47"/>
                 <View
                     android:layout_width="match_parent"

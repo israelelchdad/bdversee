@@ -66,11 +66,46 @@
             android:layout_height="0dp"
             android:background="@color/all"
             android:layout_weight="17"/>
-        <EditText
+<!--        <SearchView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:background="@android:color/black"
             android:layout_height="0dp"
-            android:layout_weight="49"/>
+            android:layout_weight="49">
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/fopen_editserch_ET"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:hint="Serch task"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/textSserch"
+            android:drawableLeft="@drawable/ic_search_outline"
+            android:drawablePadding="15dp" />
+<!--            <SearchView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_alignParentLeft="true"-->
+<!--                android:queryHint="Serch task"-->
+<!--                android:theme="@style/SearchViewTheme"/>-->
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circleoffilter"
+                android:layout_alignParentEnd="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_filter"/>
+             </RelativeLayout>
+
+
+        </RelativeLayout>
 
 
     </LinearLayout>
