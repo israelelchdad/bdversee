@@ -24,6 +24,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements Open.OnFragmentOpenListener ,Done.OnFragmentDonenListener,Inbox.OnFragmenInboxListener,Settings.OnFragmentSettingsListener,Updates.OnFragmentUpdatesListener {
     BottomNavigationView bottomNavigation;
     ArrayList<View> listOfViewOfNavigatiobar;
+    private Fragment myFragmentOpen;
+    private Fragment myFragmentDone;
+    private Fragment myFragmentUpdates;
+    private Fragment myFragmentIndex;
+    private Fragment myFragmentSetings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +38,16 @@ public class MainActivity extends AppCompatActivity implements Open.OnFragmentOp
         openFragment(Open.newInstance());
         initViewOfNavigationbar();
         chengeColorOfStatusBar();
+        bottomNavigation = findViewById(R.id.am_bottom_navigation);
+        initLisitnerOfNavigation();
 
-       bottomNavigation = findViewById(R.id.am_bottom_navigation);
-       bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
+
+
+    }
+
+    private void initLisitnerOfNavigation() {
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
     }
 
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,23 +56,39 @@ public class MainActivity extends AppCompatActivity implements Open.OnFragmentOp
             switch (item.getItemId()){
                 case R.id.action_open:
                     visbilityitem(0);
-                    openFragment(Open.newInstance());
+                    if(myFragmentOpen ==null){
+                        myFragmentOpen = Open.newInstance();
+                    }
+                    openFragment(myFragmentOpen);
                     return true;
                 case R.id.action_done:
                     visbilityitem(1);
-                    openFragment(Done.newInstance());
+                    if(myFragmentDone == null){
+                        myFragmentDone = Done.newInstance();
+                    }
+                    openFragment(myFragmentDone);
                     return true;
                 case R.id.action_updates:
                     visbilityitem(2);
-                    openFragment(Updates.newInstance());
+                    if (myFragmentUpdates == null) {
+
+                        myFragmentUpdates=Updates.newInstance();
+                    }
+                    openFragment(myFragmentUpdates);
                     return true;
                 case R.id.action_index:
                     visbilityitem(3);
-                    openFragment(Inbox.newInstance());
+                    if(myFragmentIndex==null){
+                        myFragmentIndex=Inbox.newInstance();
+                    }
+                    openFragment(myFragmentIndex);
                     return true;
                 case R.id.action_sottings:
                     visbilityitem(4);
-                    openFragment(Settings.newInstance());
+                    if(myFragmentSetings == null){
+                        myFragmentSetings= Settings.newInstance();
+                    }
+                    openFragment(myFragmentSetings);
                     return true;
             }
 

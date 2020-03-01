@@ -9,6 +9,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bdiverse.Objects.Task;
@@ -94,6 +95,7 @@ public class AdapterOfFragmentOpen extends RecyclerView.Adapter<AdapterOfFragmen
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
             ArrayList<Task> myListAlltemFilter = new ArrayList<>();
+            myFilterListTask.clear();
             for (Task myTask : myListTask) {
                 if (myTask.getTitle().toLowerCase().contains(constraint.toString().toLowerCase())){
                     myListAlltemFilter.add(myTask);
